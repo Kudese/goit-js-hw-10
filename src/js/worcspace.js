@@ -7,11 +7,13 @@ const elInputFild = document.querySelector('[id="search-box"]');
 const elListCountri = document.querySelector('.country-list');
 const elCountriInfo = document.querySelector('.country-info');
 
-elInputFild.addEventListener('input', debounce(checkCountri, DEBOUNCE_DELAY ));
+elInputFild.addEventListener('input', debounce(checkCountri, DEBOUNCE_DELAY));
 
 function checkCountri(e) {
   e.preventDefault();
   if (e.target.value.trim() == '') {
+    elCountriInfo.innerHTML = '';
+    elListCountri.innerHTML = '';
     return;
   }
   fetchCountries(e.target.value.trim())
